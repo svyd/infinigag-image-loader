@@ -1,0 +1,15 @@
+infinigag image loader
+
+Создать приложение на android версии 4+,
+которое будет отображать первых 20 trending картинок с infinigag сервиса в видe HorizontalScrollView (с normal разрешением).
+
+Работа с приложением:
+По нажатию по картинке в HorizontalScrollView приложение должно запускать отдельную Activity, которая отобразит картинку в более высоком разрешении (large).
+По нажатию back приложение возвращается в HorizontalScrollView.
+
+Обязательное использование: AsyncTask либо Handler для логики загрузки картинок.
+
+UI по своему усмотрению. Поворот activity не отключать.
+
+Работа с infinigag: https://github.com/k3min/infinigag
+
