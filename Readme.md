@@ -4,7 +4,7 @@ Test application
 
 For a quick preview of the app download the preview APK below.
 
-<a href="https://github.com/vovs/infinigag-image-loader/blob/master/binaries/TestTask.apk"><b>Download the infinigag image loader app APK</b></a>
+<a href="https://github.com/vovs/infinigag-image-loader/raw/master/binaries/TestTask.apk"><b>Download the infinigag image loader app APK</b></a>
 
 Or you can use this qr-code
 
