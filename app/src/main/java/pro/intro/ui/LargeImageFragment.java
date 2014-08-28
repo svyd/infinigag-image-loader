@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import pro.intro.R;
 import pro.intro.util.ImageManager;
 import pro.intro.util.Intents;
+import pro.intro.util.Utils;
 import pro.intro.widget.VolleyImageView;
 
 /**
@@ -59,19 +60,29 @@ public class LargeImageFragment extends BaseFragment {
         mVolleyImageView.setResponseObserver(new VolleyImageView.ResponseObserver() {
             @Override
             public void onError() {
-
+                showEmptyView();
             }
 
             @Override
             public void onSuccess() {
-                hideLoadingIndicator();
+                hideEmptyView();
             }
         });
         loadLargeImage();
+
+        returnView.findViewById(R.id.empty).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadLargeImage();
+            }
+        });
     }
 
     private void loadLargeImage() {
-        showLoadingIndicator();
+        if (!Utils.haveInternet(getActivity())) {
+            showEmptyView();
+            return;
+        }
         mVolleyImageView.setImageUrl(largeImageUrl, ImageManager.loader());
     }
 }

@@ -18,6 +18,7 @@ import pro.intro.R;
 import pro.intro.entity.ImageEntity;
 import pro.intro.entity.ImagesResponse;
 import pro.intro.util.RequestManager;
+import pro.intro.util.Utils;
 
 /**
  * Created by vsvydenko on 27.08.14.
@@ -71,6 +72,12 @@ public class ListImageFragment extends BaseFragment {
         } else {
             loadImages();
         }
+        returnView.findViewById(R.id.empty).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadImages(page);
+            }
+        });
     }
 
     private void loadImages() {
@@ -79,6 +86,10 @@ public class ListImageFragment extends BaseFragment {
     }
 
     private void loadImages(String page) {
+        if (!Utils.haveInternet(getActivity())) {
+            showEmptyView();
+            return;
+        }
         jsonTestRequest(page);
     }
 
@@ -115,6 +126,7 @@ public class ListImageFragment extends BaseFragment {
     Response.ErrorListener errorListener = new Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError volleyError) {
+            showEmptyView();
         }
     };
 
